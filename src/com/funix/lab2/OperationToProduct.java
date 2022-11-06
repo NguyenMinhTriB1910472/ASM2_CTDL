@@ -68,23 +68,21 @@ public class OperationToProduct {
 			 cinFileWriter.close();
 		 }
 	 }
-	 public void getAllItemsFromFile(String fileName, Stack<Product> stack) {
-//		 FileReader fileReader = new FileReader(fileName);
-//		 BufferedReader bufferedReader = new BufferedReader(fileReader);
-//		 int i=0;
-//		 String arr=bufferedReader.readLine();
-//		 String[] arr1=arr.split("\\s");
-//		 Stack<Product>[] arr2 = new Stack<Product>[arr1.length];
-//		 while (i<arr1.length) {
-//			 stack.;
-//			 i++;
-//		 }
-//		 System.out.print("Các phần tử trong mảng là : ");
-//		 display(arr2);
-//		 fileReader.close();
-//		 bufferedReader.close();
-//		 
-//		 return arr2;
+	 public void getAllItemsFromFile(String fileName, Stack<Product> stack) throws IOException {
+		 FileReader fileReader = new FileReader(fileName);
+		 BufferedReader bufferedReader = new BufferedReader(fileReader);
+		 int i=0;
+		 String arr=bufferedReader.readLine();
+		 // chỗ này mình tách ra như thế nào! , vì không tách thành product để add vào mảng được
+		 String[] arr1=arr.split("\\s");
+		 while (i<arr1.length) {
+			 Stack stack2=new Stack<>(arr1[i]);
+			 i++;
+		 }
+		 System.out.print("Các phần tử trong mảng là : ");
+		 fileReader.close();
+		 bufferedReader.close();
+		 
 	 }
 	 public void getAllItemsFromFile(String fileName, Queue<Product> queue) {
 

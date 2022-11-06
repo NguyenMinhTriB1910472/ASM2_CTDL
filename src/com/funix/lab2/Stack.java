@@ -1,13 +1,32 @@
 package com.funix.lab2;
 
 public class Stack<T> {
-	private Node<T> head;
-
-	public Node<T> getHead() {
-		return head;
+	private T value;
+	private Node topNode ;
+	public Stack() {
+		this.topNode=null;
 	}
-
-	public void setHead(Node<T> head) {
-		this.head = head;
+	public Stack(T value) {
+		this.topNode=null;
+		this.value=value;
 	}
+	public T getValue() {
+		return value;
+	}
+	public void setValue(T value) {
+		this.value = value;
+	}
+	public Node<T> getTopNode() {
+		return topNode;
+	}
+	public void setTopNode(Node<T> topNode) {
+		this.topNode = topNode;
+	}
+	
+	public void push(T value) {
+		Node newNode=new Node<>();
+		newNode.setNextNode(topNode);
+		topNode=newNode;
+	}
+	
 }

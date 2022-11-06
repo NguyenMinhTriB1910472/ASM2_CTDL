@@ -1,6 +1,9 @@
 package com.funix.lab2;
 
 public class LinkedList<T> {
+	
+	// e có cần thêm node<T> vào không
+	
 	private T data;
 	private Node head;
 	private Node tail;
@@ -63,9 +66,21 @@ public class LinkedList<T> {
 		 }
 		 head=newNodeLinkedList;
 	 }
+	 
+	 public void insertAfterPosition(Product item,int position) {
+		 Node newNodeLinkedList=new Node(item);
+		 int i=0;
+		 while(i<position) {
+			 newNodeLinkedList=newNodeLinkedList.getNextNode();
+		 }
+		 newNodeLinkedList.setNextNode(this.head);
+		 if(head==null) {
+			 newNodeLinkedList.setPreviousNode(this.head);
+		 }
+		 head=newNodeLinkedList;
+	 }
 
-
-	 public void insertAfterPosition(int position, Product item) {
+	 public void insertAtTail(int position, Product item) {
 		 	Node newNode= new Node(item);
 		 	Node lastNode=this.head;
 		 	lastNode=this.head;
