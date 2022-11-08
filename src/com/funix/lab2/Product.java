@@ -1,6 +1,9 @@
 package com.funix.lab2;
 
+import java.util.Scanner;
+
 public class Product {
+	Scanner scanner = new Scanner(System.in);
 	private String id;
 	private String title;
 	private int quanlity;
@@ -15,7 +18,6 @@ public class Product {
 	 @Override
 	 public String toString() {
 		return id+" |  "+title+"   | "+quanlity+" | "+price;
-
 	 }
 	public String getId() {
 		return id;
@@ -41,5 +43,16 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	 
+	 public Product createProduct() {
+		 System.out.println("Mời nhập id: ");
+		 String id=scanner.nextLine();
+		 System.out.println("Mời nhập title: ");
+		 String title=scanner.nextLine();
+		 System.out.println("Mời nhập quantity: ");
+		 int quantity=scanner.nextInt();
+		 System.out.println("Mời nhập price: ");
+		 double price=scanner.nextDouble();
+		 Product product=new Product(id, title, quantity, price);
+		 return product;
+	 }
 }

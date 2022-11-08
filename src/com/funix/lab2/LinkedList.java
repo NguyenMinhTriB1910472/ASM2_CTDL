@@ -4,16 +4,8 @@ public class LinkedList<T> {
 	
 	// e có cần thêm node<T> vào không
 	
-	private T data;
 	private Node head;
 	private Node tail;
-	public T getData() {
-		return data;
-	}
-
-	public void setData(T data) {
-		this.data = data;
-	}
 
 	public Node getHead() {
 		return head;
@@ -37,9 +29,7 @@ public class LinkedList<T> {
 		 this.head=head;
 		 this.tail=tail;
 	 }
-	 public LinkedList(T data) {
-		 this.data=data;
-	 }
+
 
 	 public boolean isEmpty() {
 		 return this.head==null && this.tail==null;

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class OperationToProduct {
@@ -17,17 +18,7 @@ public class OperationToProduct {
 //			
 //		}
 //		return 0;
-//	 }
-	/**
-
-	  * Creating and returning a product with info input from keyboard.
-
-	  *
-
-	  * @return The product
-
-	  */
-
+//	 }ư
 	 public Product createProduct() {
 		 System.out.println("Mời nhập id: ");
 		 String id=scanner.nextLine();
@@ -46,7 +37,7 @@ public class OperationToProduct {
 		 list.insertToHead(product);
 	 }
 	 public void displayAll(LinkedList<Product> list) {
-		 Product product= list.getData();
+		 Product product= list.getHead().getData();
 		 product.toString();
 	 }
 	 public void writeAllItemsToFile(String fileName, LinkedList<Product> list) throws IOException {
@@ -57,7 +48,7 @@ public class OperationToProduct {
 			 int i = 0;
 	
 			 while (i < list.length()) {
-				 cinFileWriter.write(list.getData() + " ");
+				 cinFileWriter.write(list.getHead().getData() + " ");
 				 i++;
 			 }
 		 } catch (Exception e) {
@@ -75,6 +66,15 @@ public class OperationToProduct {
 		 String arr=bufferedReader.readLine();
 		 // chỗ này mình tách ra như thế nào! , vì không tách thành product để add vào mảng được
 		 String[] arr1=arr.split("\\s");
+		 // e chưa biết cách push dữ liệu vào mảng như thế nào
+		 for (int j = 0; j < arr1.length; j++) {
+			for (int j2 = 0; j2 < 3; j2++) {
+				String[] arr2=arr.split("|");
+				stack.push(null);
+			}
+			stack.getTopNode();
+		}
+		 
 		 while (i<arr1.length) {
 			 Stack stack2=new Stack<>(arr1[i]);
 			 i++;
@@ -85,7 +85,7 @@ public class OperationToProduct {
 		 
 	 }
 	 public void getAllItemsFromFile(String fileName, Queue<Product> queue) {
-
+		 
 	 }
 	 public void searchByCode(LinkedList<Product> list) {
 		 System.out.println("Mời bạn nhập giá trị cần tìm: ");
@@ -106,5 +106,24 @@ public class OperationToProduct {
 		 if(finding==false) {
 			 System.out.println("Can't find your product!");
 		 }
+	 }
+	 public void sortByCode(LinkedList<Product> list) {
+		 // e sử dụng bubble sort
+		 // e không biết lấy getHead tại vị trí j làm sao
+		 for (int i = 1; i < list.length(); ++i) {
+				String key=list.getHead().getData().getId();
+				int j=i-1;
+				
+				while(j>=0 && arr[j]>key) {
+					arr[j+1]=arr[j];
+					j=j-1;
+				}
+				arr[j+1]=key;
+		 }
+	 }
+	 public void addFirst(LinkedList<Product> list) {
+		 Product product = new Product();
+		 product.createProduct();
+		 list.insertToHead(product);
 	 }
 }
