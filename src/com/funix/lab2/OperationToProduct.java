@@ -62,30 +62,29 @@ public class OperationToProduct {
 	 public void getAllItemsFromFile(String fileName, Stack<Product> stack) throws IOException {
 		 FileReader fileReader = new FileReader(fileName);
 		 BufferedReader bufferedReader = new BufferedReader(fileReader);
-		 int i=0;
-		 String arr=bufferedReader.readLine();
-		 // chỗ này mình tách ra như thế nào! , vì không tách thành product để add vào mảng được
-		 String[] arr1=arr.split("\\s");
-		 // e chưa biết cách push dữ liệu vào mảng như thế nào
-		 for (int j = 0; j < arr1.length; j++) {
-			for (int j2 = 0; j2 < 3; j2++) {
-				String[] arr2=arr.split("|");
-				stack.push(null);
-			}
-			stack.getTopNode();
-		}
-		 
-		 while (i<arr1.length) {
-			 Stack stack2=new Stack<>(arr1[i]);
-			 i++;
-		 }
+		 String line;
+		 while((line=bufferedReader .readLine())!=null) {
+			String[] arr1= line.split("\\|");
+		 	Product product= new Product(arr1[0].trim(), arr1[1].trim(),Integer.parseInt(arr1[2]), Integer.parseInt(arr1[3]));
+		 	stack.push(product);
+		 };
 		 System.out.print("Các phần tử trong mảng là : ");
 		 fileReader.close();
 		 bufferedReader.close();
-		 
-	 }
-	 public void getAllItemsFromFile(String fileName, Queue<Product> queue) {
-		 
+
+	}
+	 public void getAllItemsFromFile(String fileName, Queue<Product> queue) throws NumberFormatException, IOException {
+		 FileReader fileReader = new FileReader(fileName);
+		 BufferedReader bufferedReader = new BufferedReader(fileReader);
+		 String line;
+		 while((line=bufferedReader .readLine())!=null) {
+			String[] arr1= line.split("\\|");
+		 	Product product= new Product(arr1[0].trim(), arr1[1].trim(),Integer.parseInt(arr1[2]), Integer.parseInt(arr1[3]));
+		 	queue.push(product);
+		 };
+		 System.out.print("Các phần tử trong mảng là : ");
+		 fileReader.close();
+		 bufferedReader.close();
 	 }
 	 public void searchByCode(LinkedList<Product> list) {
 		 System.out.println("Mời bạn nhập giá trị cần tìm: ");

@@ -8,7 +8,7 @@ public class Queue<T> {
 		return (this.headNode ==null &&	this.tailNode ==null);
 	}
 	
-	public boolean push() {
+	public boolean push(Product product) {
 		Node newNode=new Node<>();
 		if(isEmpty()) {
 			newNode=headNode=tailNode;
