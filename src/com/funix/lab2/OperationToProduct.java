@@ -42,14 +42,16 @@ public class OperationToProduct {
 	 }
 	 public void writeAllItemsToFile(String fileName, LinkedList<Product> list) throws IOException {
 		 FileWriter cinFileWriter=null;
+		 Node<Product> current = list.getHead();
 		 try {
 			 cinFileWriter = new FileWriter(fileName);
 			 //System.out.println("Enter characters: ");
 			 int i = 0;
 	
-			 while (i < list.length()) {
-				 cinFileWriter.write(list.getHead().getData() + " ");
+			 while (current.getNextNode()!=null) {
+				 cinFileWriter.write(current.getData().toString());
 				 i++;
+				 
 			 }
 		 } catch (Exception e) {
 			 System.out.println("Ngoai le");
@@ -65,14 +67,14 @@ public class OperationToProduct {
 		 String line;
 		 while((line=bufferedReader .readLine())!=null) {
 			String[] arr1= line.split("\\|");
-		 	Product product= new Product(arr1[0].trim(), arr1[1].trim(),Integer.parseInt(arr1[2]), Integer.parseInt(arr1[3]));
+		 	Product product= new Product(arr1[0].trim(), arr1[1].trim(),Integer.parseInt(arr1[2].trim()), Double.parseDouble(arr1[3].trim()));
 		 	stack.push(product);
 		 };
 		 System.out.print("Các phần tử trong mảng là : ");
 		 fileReader.close();
 		 bufferedReader.close();
 
-	}
+	}	 
 	 public void getAllItemsFromFile(String fileName, Queue<Product> queue) throws NumberFormatException, IOException {
 		 FileReader fileReader = new FileReader(fileName);
 		 BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -109,6 +111,7 @@ public class OperationToProduct {
 	 public void sortByCode(LinkedList<Product> list) {
 		 // e sử dụng bubble sort
 		 // e không biết lấy getHead tại vị trí j làm sao
+		 Node<Product> currentNode=list.getHead();
 		 for (int i = 1; i < list.length(); ++i) {
 				String key=list.getHead().getData().getId();
 				int j=i-1;
