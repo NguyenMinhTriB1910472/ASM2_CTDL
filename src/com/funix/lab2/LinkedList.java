@@ -56,10 +56,10 @@ public class LinkedList<T> {
 		 	this.tail.setNextNode(newNode);
 		 	this.tail=newNode;
 	 }
-
-
+	 
 	 public void deleteTail() {
 		Node lasNode=new Node();
+		Node lastNode=new Node();
 		while (head.getNextNode()!=null) {
 			 lasNode=head.getNextNode();
 		}

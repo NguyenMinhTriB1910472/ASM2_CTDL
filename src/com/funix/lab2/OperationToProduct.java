@@ -108,31 +108,10 @@ public class OperationToProduct {
 			 System.out.println("Can't find your product!");
 		 }
 	 }
-	 // e chưa biết sử lý node ở vị trí j như thế nào ạ!
-	 public void sortByCode(LinkedList<Product> list) {
-		 // e sử dụng bubble sort
-		 // e không biết lấy getHead tại vị trí j làm sao
-		 Node<Product> currentNode=list.getHead();
-		 for (int i = 1; i < list.length(); ++i) {
-				String key=list.getHead().getData().getId();
-				int j=i-1;
-				
-				while(j>=0 && arr[j]>key) {
-					arr[j+1]=arr[j];
-					j=j-1;
-				}
-				arr[j+1]=key;
-		 }
-	 }
-	 public void sortByCode(LinkedList<Product> list) {
-		 // e sử dụng bubble sort
-		 // e không biết lấy getHead tại vị trí j làm sao
-		 Node<Product> currentNode=list.getHead();
-		 int i=0;
-		 while (i<list.length()) {
-			 
-			i++;
-		}
+	 public void insertToTail(LinkedList<Product> list) {
+		 Product product = null;
+		 product.createProduct();
+		 list.insertAtTail(product);
 	 }
 	 public void addFirst(LinkedList<Product> list) {
 		 Product product = new Product();

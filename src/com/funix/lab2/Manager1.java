@@ -8,9 +8,11 @@ import com.asm1.main.Utils;
 
 public class Manager1 {
 	static Scanner scanner = new Scanner(System.in);
+	static Queue<Product> productQueue=new Queue<Product>();
+	static OperationToProduct operationToProduct=new OperationToProduct();
+
 	public static void main(String[] args) throws IOException {
 		Queue<Product> proudctQueue= new Queue<Product>();
-		OperationToProduct operationToProduct=new OperationToProduct();
 		operationToProduct.getAllItemsFromFile(
 				"D:\\hoctap\\CyberSoft\\CTDL_LAB2\\data.txt", proudctQueue);
 //		LinkedList<Product> list = null;
@@ -21,8 +23,6 @@ public class Manager1 {
 //			list.getHead().getNextNode();
 //		}
 //		operationToProduct.writeAllItemsToFile("D:\\hoctap\\CyberSoft\\CTDL_LAB2\\data.txt", list);
-
-		//vì s current node e bị null ạ
 		//Node currentNode= proudctQueue.getHeadNode();
 		while (!proudctQueue.isEmpty()) {
 			System.out.println(proudctQueue.pop());
@@ -43,14 +43,7 @@ public class Manager1 {
 	 		
 		    switch (choice) {
 		      case 1:
-		    	System.out.println("Mời bạn nhập số lượng phần phần tử của mảng : ");
-			 	int n=scanner.nextInt();
-			 	arr=new float[n];
-		 		 for (int i = 0; i < n; i++) {
-		 			System.out.println("Mời nhập phần tử tại vị trí "+i+" : ");
-		 			arr[i]=scanner.nextFloat();
-		 		}
-		        Math.writeFile1("input.txt", arr);
+		    	operationToProduct.getAllItemsFromFile("D:\\hoctap\\CyberSoft\\CTDL_LAB2\\data.txt", productQueue);
 		        break;
 		      case 2:
 		    	arrr= Math.readFile("input.txt");
