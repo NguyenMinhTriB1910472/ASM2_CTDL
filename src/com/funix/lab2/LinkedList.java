@@ -46,45 +46,15 @@ public class LinkedList<T> {
 		}
 		return count;
 	 }
-	 
 
-	 public void insertToHead(Product item) {
-		 Node newNodeLinkedList=new Node(item);
-		 newNodeLinkedList.setNextNode(this.head);
-		 if(head==null) {
-			 newNodeLinkedList.setPreviousNode(this.head);
-		 }
-		 head=newNodeLinkedList;
-	 }
-	 
-	 public void insertAfterPosition(Product item,int position) {
-		 Node newNodeLinkedList=new Node(item);
-		 int i=0;
-		 while(i<position) {
-			 newNodeLinkedList=newNodeLinkedList.getNextNode();
-		 }
-		 newNodeLinkedList.setNextNode(this.head);
-		 if(head==null) {
-			 newNodeLinkedList.setPreviousNode(this.head);
-		 }
-		 head=newNodeLinkedList;
-	 }
-
-	 public void insertAtTail(int position, Product item) {
+	 public void insertAtTail(Product item) {
 		 	Node newNode= new Node(item);
-		 	Node lastNode=this.head;
-		 	lastNode=this.head;
-		 	lastNode.setNextNode(null);
-		 	if (head==null) {
-				lastNode.setPreviousNode(null);
-				this.head=lastNode;
-				return;
-			}
-		 	while (lastNode.getNextNode()!=null) {
-				lastNode=lastNode.getNextNode();
-			}
-		 	lastNode.setNextNode(newNode);
-		 	newNode.setPreviousNode(lastNode);
+		 	if(this.head==null) {
+		 		this.head=this.tail=newNode;
+		 		return;
+		 	}
+		 	this.tail.setNextNode(newNode);
+		 	this.tail=newNode;
 	 }
 
 

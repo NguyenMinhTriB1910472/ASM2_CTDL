@@ -20,7 +20,21 @@ public class Queue<T> {
 			return true;
 		}
 	}
-	
+	public Product pop() {
+		Product value=headNode.getData();
+		
+		if (isEmpty()) {
+			return null;
+		}
+		if(headNode==tailNode) {
+			headNode=tailNode=null;
+		}else {
+			headNode=headNode.getNextNode();
+		}
+		
+		return value;
+		
+	}
 	public Node<T> getHeadNode() {
 		return headNode;
 	}

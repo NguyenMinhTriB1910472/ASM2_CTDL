@@ -23,10 +23,20 @@ public class Stack<T> {
 		this.topNode = topNode;
 	}
 	
-	public void push(T value) {
-		Node newNode=new Node<>();
+	public void push(Product value) {
+		Node newNode=new Node<>(value);
 		newNode.setNextNode(topNode);
 		topNode=newNode;
+	}
+	public Product pop() {
+		Product product=topNode.getData();
+		topNode=topNode.getNextNode();
+		return product;
+	}
+	public void show(T value) {
+		while (topNode.getNextNode()!=null) {
+			System.out.println(topNode.getData().toString());
+		}
 	}
 	
 }

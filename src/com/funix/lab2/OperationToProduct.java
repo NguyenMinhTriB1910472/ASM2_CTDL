@@ -34,7 +34,7 @@ public class OperationToProduct {
 	 public void addLast(LinkedList<Product> list) {
 		 OperationToProduct operationToProduct =new OperationToProduct();
 		 Product product= operationToProduct.createProduct();
-		 list.insertToHead(product);
+		 list.insertAtTail(product);
 	 }
 	 public void displayAll(LinkedList<Product> list) {
 		 Product product= list.getHead().getData();
@@ -81,7 +81,7 @@ public class OperationToProduct {
 		 String line;
 		 while((line=bufferedReader .readLine())!=null) {
 			String[] arr1= line.split("\\|");
-		 	Product product= new Product(arr1[0].trim(), arr1[1].trim(),Integer.parseInt(arr1[2]), Integer.parseInt(arr1[3]));
+		 	Product product= new Product(arr1[0].trim(), arr1[1].trim(),Integer.parseInt(arr1[2].trim()), Double.parseDouble(arr1[3].trim()));
 		 	queue.push(product);
 		 };
 		 System.out.print("Các phần tử trong mảng là : ");
@@ -108,6 +108,7 @@ public class OperationToProduct {
 			 System.out.println("Can't find your product!");
 		 }
 	 }
+	 // e chưa biết sử lý node ở vị trí j như thế nào ạ!
 	 public void sortByCode(LinkedList<Product> list) {
 		 // e sử dụng bubble sort
 		 // e không biết lấy getHead tại vị trí j làm sao
@@ -122,6 +123,16 @@ public class OperationToProduct {
 				}
 				arr[j+1]=key;
 		 }
+	 }
+	 public void sortByCode(LinkedList<Product> list) {
+		 // e sử dụng bubble sort
+		 // e không biết lấy getHead tại vị trí j làm sao
+		 Node<Product> currentNode=list.getHead();
+		 int i=0;
+		 while (i<list.length()) {
+			 
+			i++;
+		}
 	 }
 	 public void addFirst(LinkedList<Product> list) {
 		 Product product = new Product();
