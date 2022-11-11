@@ -9,23 +9,25 @@ public class Queue<T> {
 	}
 	
 	public boolean push(Product product) {
-		Node newNode=new Node<>();
+		Node newNode=new Node(product);
 		if(isEmpty()) {
-			newNode=headNode=tailNode;
+			headNode = tailNode = newNode;
 			return true;
 		}
 		else {
-			newNode.setPreviousNode(this.tailNode);
+			//ewNode.setPreviousNode(this.tailNode);
+			tailNode.setNextNode(newNode);
 			tailNode=newNode;
 			return true;
 		}
 	}
 	public Product pop() {
-		Product value=headNode.getData();
+		
 		
 		if (isEmpty()) {
 			return null;
 		}
+		Product value=headNode.getData();
 		if(headNode==tailNode) {
 			headNode=tailNode=null;
 		}else {

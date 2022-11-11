@@ -137,6 +137,6 @@ public class OperationToProduct {
 	 public void addFirst(LinkedList<Product> list) {
 		 Product product = new Product();
 		 product.createProduct();
-		 list.insertToHead(product);
+//		 list.insertToHead(product);
 	 }
 }
