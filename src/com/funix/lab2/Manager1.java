@@ -40,11 +40,9 @@ public class Manager1 implements Comparator<Product>{
 //			System.out.println(linkedList.pop());
 //			//proudctQueue.getHeadNode().getNextNode();
 //		}
-		operationToProduct.deleteById(linkedList);
-		while (!linkedList.isEmpty()) {
-			System.out.println(linkedList.pop());
-		//proudctQueue.getHeadNode().getNextNode();
-		}
+//		operationToProduct.insertToTail(linkedList);
+		operationToProduct.searchByCode(linkedList);
+    	operationToProduct.print(linkedList);
 	}
 	
 	public static void choice() throws IOException {
@@ -67,13 +65,11 @@ public class Manager1 implements Comparator<Product>{
 		    	
 		        break;
 		      case 2:
-		    	//data bi null
-		    	operationToProduct.insertToTail(linkedList);
+		    	Product product= operationToProduct.createProduct();
+		    	linkedList.insertAtTail(product);
 		        break;
 		      case 3:
-		    	while (!linkedList.isEmpty()) {
-					System.out.println(linkedList.getHead().getData().toString());
-				}
+		    	operationToProduct.print(linkedList);
 		        break;
 		      case 4:
 		    	// khong write dc
@@ -85,10 +81,10 @@ public class Manager1 implements Comparator<Product>{
 		    	operationToProduct.print(linkedList);
 		        break;
 		      case 6:
-		    	  operationToProduct.deleteById(linkedList);
+		    	//delete không được
+		    	operationToProduct.deleteById(linkedList);
 		  		while (!linkedList.isEmpty()) {
 		  			System.out.println(linkedList.pop());
-		  		//proudctQueue.getHeadNode().getNextNode();
 		  		}
 			    break;
 		      case 7:

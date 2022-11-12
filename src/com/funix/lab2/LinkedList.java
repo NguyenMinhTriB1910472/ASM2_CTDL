@@ -1,7 +1,9 @@
 package com.funix.lab2;
 
+import java.util.Scanner;
+
 public class LinkedList<T> {
-	
+	Scanner scanner =new Scanner(System.in);
 	// e có cần thêm node<T> vào không
 	
 	private Node head;
@@ -47,21 +49,27 @@ public class LinkedList<T> {
 		}
 		return count;
 	 }
-	 public Product pop() {
-		Product product=head.getData();
-		if (isEmpty()) {
-			return null;
-		}
-		else {
-			head=head.getNextNode();
-		}
-		return product;
-		
+
+	 public Product createProduct() {
+		 System.out.println("Mời nhập id: ");
+		 String id=scanner.nextLine();
+		 System.out.println("Mời nhập title: ");
+		 String title=scanner.nextLine();
+		 System.out.println("Mời nhập quantity: ");
+		 int quantity=scanner.nextInt();
+		 System.out.println("Mời nhập price: ");
+		 double price=scanner.nextDouble();
+		 Product product=new Product(id, title, quantity, price);
+		 return product;
 	 }
 	 public void insertToTail(LinkedList<Product> list) {
-		 Product product = null;
-		 product.createProduct();
+		 Product product = createProduct();
 		 list.insertAtTail(product);
+	 }
+	 public void Print(LinkedList<Product> linkedList) {
+		 while (!linkedList.isEmpty()) {
+			linkedList.getHead().getData().toString();
+		}
 	 }
 	 public void insertAtTail(Product item) {
 		 	Node newNode= new Node(item);

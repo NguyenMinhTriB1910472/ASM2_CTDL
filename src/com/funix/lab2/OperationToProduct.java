@@ -20,9 +20,10 @@ public class OperationToProduct {
 //		return 0;
 //	 }ư
 	 public void print(LinkedList<Product> linkedList) {
-		 while (!linkedList.isEmpty()) {
-				System.out.println(linkedList.pop());
-				//proudctQueue.getHeadNode().getNextNode();
+		 Node currentLinkedList=linkedList.getHead();
+		 while (currentLinkedList!=null) {
+				System.out.println(currentLinkedList.getData().toString());
+				currentLinkedList= currentLinkedList.getNextNode();
 		 }
 	 }
 	 public Product createProduct() {
@@ -127,9 +128,9 @@ public class OperationToProduct {
 		 return null;
 	 }
 	 public void insertToTail(LinkedList<Product> list) {
-		 Product product = new Product();
-		 product.createProduct();
+		 Product product= createProduct();
 		 list.insertAtTail(product);
+		 print(list);
 	 }
 	 public void addFirst(LinkedList<Product> list) {
 		 Product product = new Product();
