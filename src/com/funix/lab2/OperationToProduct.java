@@ -19,6 +19,12 @@ public class OperationToProduct {
 //		}
 //		return 0;
 //	 }ư
+	 public void print(LinkedList<Product> linkedList) {
+		 while (!linkedList.isEmpty()) {
+				System.out.println(linkedList.pop());
+				//proudctQueue.getHeadNode().getNextNode();
+		 }
+	 }
 	 public Product createProduct() {
 		 System.out.println("Mời nhập id: ");
 		 String id=scanner.nextLine();
@@ -61,6 +67,19 @@ public class OperationToProduct {
 			 cinFileWriter.close();
 		 }
 	 }
+	 public void getAllItemsFromFile(String fileName, LinkedList<Product> productLinkedList) throws NumberFormatException, IOException {
+		 FileReader fileReader = new FileReader(fileName);
+		 BufferedReader bufferedReader = new BufferedReader(fileReader);
+		 String line;
+		 while((line=bufferedReader .readLine())!=null) {
+			String[] arr1= line.split("\\|");
+		 	Product product= new Product(arr1[0].trim(), arr1[1].trim(),Integer.parseInt(arr1[2].trim()), Double.parseDouble(arr1[3].trim()));
+		 	productLinkedList.insertAtTail(product);
+		 };
+		 System.out.print("Các phần tử trong mảng là : ");
+		 fileReader.close();
+		 bufferedReader.close();
+	 }
 	 public void getAllItemsFromFile(String fileName, Stack<Product> stack) throws IOException {
 		 FileReader fileReader = new FileReader(fileName);
 		 BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -88,7 +107,7 @@ public class OperationToProduct {
 		 fileReader.close();
 		 bufferedReader.close();
 	 }
-	 public void searchByCode(LinkedList<Product> list) {
+	 public Product searchByCode(LinkedList<Product> list) {
 		 System.out.println("Mời bạn nhập giá trị cần tìm: ");
 		 String idString= scanner.nextLine();
 		 boolean finding= false;
@@ -99,17 +118,16 @@ public class OperationToProduct {
 				if (product.getId().equalsIgnoreCase(idString)) {
 					System.out.println(count);
 					finding=true;
-					break;
+					return product;
 				}
 				count++;
 				node=node.getNextNode();
 		} while (finding);
-		 if(finding==false) {
-			 System.out.println("Can't find your product!");
-		 }
+		 System.out.println("Can't find your product!");
+		 return null;
 	 }
 	 public void insertToTail(LinkedList<Product> list) {
-		 Product product = null;
+		 Product product = new Product();
 		 product.createProduct();
 		 list.insertAtTail(product);
 	 }
@@ -117,5 +135,10 @@ public class OperationToProduct {
 		 Product product = new Product();
 		 product.createProduct();
 //		 list.insertToHead(product);
+	 }
+	 public void deleteById(LinkedList<Product> list) {
+		 Product product = new Product();
+		 product.createProduct();
+		 list.deleteNodeByCode(product);
 	 }
 }

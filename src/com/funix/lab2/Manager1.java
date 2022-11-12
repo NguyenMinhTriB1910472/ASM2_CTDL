@@ -1,20 +1,24 @@
 package com.funix.lab2;
 
 import java.io.IOException;
+import java.text.Collator;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
 import com.asm1.main.Utils;
 
-public class Manager1 {
+public class Manager1 implements Comparator<Product>{
 	static Scanner scanner = new Scanner(System.in);
 	static Queue<Product> productQueue=new Queue<Product>();
 	static OperationToProduct operationToProduct=new OperationToProduct();
+	static LinkedList<Product> linkedList=new LinkedList<Product>();
 
 	public static void main(String[] args) throws IOException {
-		Queue<Product> proudctQueue= new Queue<Product>();
-		operationToProduct.getAllItemsFromFile(
-				"D:\\hoctap\\CyberSoft\\CTDL_LAB2\\data.txt", proudctQueue);
+//		Queue<Product> proudctQueue= new Queue<Product>();
+//		operationToProduct.getAllItemsFromFile(
+//				"D:\\hoctap\\CyberSoft\\CTDL_LAB2\\data.txt", linkedList);
 //		LinkedList<Product> list = null;
 //		Product product=new Product("1", "2", 0, 0);
 //		list.insertAtTail(product);
@@ -24,9 +28,22 @@ public class Manager1 {
 //		}
 //		operationToProduct.writeAllItemsToFile("D:\\hoctap\\CyberSoft\\CTDL_LAB2\\data.txt", list);
 		//Node currentNode= proudctQueue.getHeadNode();
-		while (!proudctQueue.isEmpty()) {
-			System.out.println(proudctQueue.pop());
-			//proudctQueue.getHeadNode().getNextNode();
+		
+		operationToProduct.getAllItemsFromFile("D:\\hoctap\\CyberSoft\\CTDL_LAB2\\data.txt", linkedList);
+//		operationToProduct.insertToTail(linkedList);
+//		while (!linkedList.isEmpty()) {
+//			System.out.println(linkedList.pop());
+//			//proudctQueue.getHeadNode().getNextNode();
+//		}
+//		operationToProduct.writeAllItemsToFile("D:\\\\hoctap\\\\CyberSoft\\\\CTDL_LAB2\\\\data.txt", linkedList);
+//		while (!linkedList.isEmpty()) {
+//			System.out.println(linkedList.pop());
+//			//proudctQueue.getHeadNode().getNextNode();
+//		}
+		operationToProduct.deleteById(linkedList);
+		while (!linkedList.isEmpty()) {
+			System.out.println(linkedList.pop());
+		//proudctQueue.getHeadNode().getNextNode();
 		}
 	}
 	
@@ -43,57 +60,40 @@ public class Manager1 {
 	 		
 		    switch (choice) {
 		      case 1:
-		    	operationToProduct.getAllItemsFromFile("D:\\hoctap\\CyberSoft\\CTDL_LAB2\\data.txt", productQueue);
+		    	operationToProduct.getAllItemsFromFile("D:\\hoctap\\CyberSoft\\CTDL_LAB2\\data.txt", linkedList);
+		    	while (!linkedList.isEmpty()) {
+					System.out.println(linkedList.getHead().getData().toString());
+				}
+		    	
 		        break;
 		      case 2:
-		    	arrr= Math.readFile("input.txt");
+		    	//data bi null
+		    	operationToProduct.insertToTail(linkedList);
 		        break;
 		      case 3:
-		    	arrr=Math.bubbleSort(arr);
+		    	while (!linkedList.isEmpty()) {
+					System.out.println(linkedList.getHead().getData().toString());
+				}
 		        break;
 		      case 4:
-		    	arrr=Math.selectionSort(arr);
+		    	// khong write dc
+		  		operationToProduct.writeAllItemsToFile("D:\\\\hoctap\\\\CyberSoft\\\\CTDL_LAB2\\\\data.txt", linkedList);
 		        break;
 		      case 5:
-		    	arrr=Math.insertionSort(arr);
+		    	//search ket qua ra sai 
+		    	operationToProduct.searchByCode(linkedList);
+		    	operationToProduct.print(linkedList);
 		        break;
 		      case 6:
-		    	System.out.println("Mời nhập giá trị cần tìm giá trị lớn hơn : ");
-		    	float index = scanner.nextFloat();
-		    	boolean isRight =false;
-		    	for (int i = 0; i < arr.length; i++) {
-					if (index==arr[i]) {
-						isRight=true;
-						break;
-					}
-					
-				}
-		    	if (isRight==true) {
-		    		int count1=0;
-			    	for (int i = 0; i < arr.length; i++) {
-						if(arr[i]==arrr[i]) count1++;
-					}
-			    	if(count1<arrr.length-1) {
-			    		Math.search(arrr,index);
-			    	}else {
-						System.out.println("Mời bạn sắp xếp các phần tử trong mảng trước khi tìm kiếm: ");
-						break;
-					}
-				}else if((isRight==true)){
-					System.out.println("Không có giá trị bạn cần tìm trong mảng!");
-					break;
-				}
-		    	
-		    	
+		    	  operationToProduct.deleteById(linkedList);
+		  		while (!linkedList.isEmpty()) {
+		  			System.out.println(linkedList.pop());
+		  		//proudctQueue.getHeadNode().getNextNode();
+		  		}
 			    break;
 		      case 7:
-		    	System.out.println("Nhập số cần tìm : ");
-		    	arrr=Math.selectionSort(arr);
-		    	float value =scanner.nextFloat();
-		    	float number=Math.binarySearch(arrr, 0, arrr.length-1, value);
-			    float[] arrr1 = {number};
-		    	System.out.println(arrr1[0]);
-			    Math.writeFile1("output", arrr1);
+		    	  System.out.println("Mời nhập giá trị cần tìm giá trị lớn hơn : ");
+			    	 Collections.sort(null);
 		    	
 				break;
 			  case 0:
