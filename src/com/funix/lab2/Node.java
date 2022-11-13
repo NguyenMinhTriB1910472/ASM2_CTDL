@@ -31,4 +31,7 @@ public class Node<T> {
 	public void setPreviousNode(Node<T> previousNode) {
 		this.previousNode = previousNode;
 	}
+	public void print(Product product) {
+		System.out.println(product.getId() +"|"+product.getPrice()+"|"+product.getQuanlity()+"|"+product.getTitle());
+	}
 }

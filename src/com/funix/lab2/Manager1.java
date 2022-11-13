@@ -7,42 +7,16 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
-import com.asm1.main.Utils;
-
 public class Manager1 implements Comparator<Product>{
 	static Scanner scanner = new Scanner(System.in);
 	static Queue<Product> productQueue=new Queue<Product>();
+	static Stack<Product> productStack =new Stack<Product>();
 	static OperationToProduct operationToProduct=new OperationToProduct();
 	static LinkedList<Product> linkedList=new LinkedList<Product>();
-
+	static Product product=new Product();
 	public static void main(String[] args) throws IOException {
-//		Queue<Product> proudctQueue= new Queue<Product>();
-//		operationToProduct.getAllItemsFromFile(
-//				"D:\\hoctap\\CyberSoft\\CTDL_LAB2\\data.txt", linkedList);
-//		LinkedList<Product> list = null;
-//		Product product=new Product("1", "2", 0, 0);
-//		list.insertAtTail(product);
-//		while (list.getHead()!=null) {
-//			list.getHead().toString();
-//			list.getHead().getNextNode();
-//		}
-//		operationToProduct.writeAllItemsToFile("D:\\hoctap\\CyberSoft\\CTDL_LAB2\\data.txt", list);
-		//Node currentNode= proudctQueue.getHeadNode();
-		
-		operationToProduct.getAllItemsFromFile("D:\\hoctap\\CyberSoft\\CTDL_LAB2\\data.txt", linkedList);
-//		operationToProduct.insertToTail(linkedList);
-//		while (!linkedList.isEmpty()) {
-//			System.out.println(linkedList.pop());
-//			//proudctQueue.getHeadNode().getNextNode();
-//		}
-//		operationToProduct.writeAllItemsToFile("D:\\\\hoctap\\\\CyberSoft\\\\CTDL_LAB2\\\\data.txt", linkedList);
-//		while (!linkedList.isEmpty()) {
-//			System.out.println(linkedList.pop());
-//			//proudctQueue.getHeadNode().getNextNode();
-//		}
-//		operationToProduct.insertToTail(linkedList);
-		operationToProduct.searchByCode(linkedList);
-    	operationToProduct.print(linkedList);
+		Product product2= operationToProduct.createProduct();
+	    operationToProduct.printBinary(product2);
 	}
 	
 	public static void choice() throws IOException {
@@ -76,21 +50,26 @@ public class Manager1 implements Comparator<Product>{
 		  		operationToProduct.writeAllItemsToFile("D:\\\\hoctap\\\\CyberSoft\\\\CTDL_LAB2\\\\data.txt", linkedList);
 		        break;
 		      case 5:
-		    	//search ket qua ra sai 
 		    	operationToProduct.searchByCode(linkedList);
-		    	operationToProduct.print(linkedList);
 		        break;
 		      case 6:
-		    	//delete không được
-		    	operationToProduct.deleteById(linkedList);
-		  		while (!linkedList.isEmpty()) {
-		  			System.out.println(linkedList.pop());
-		  		}
+		  		operationToProduct.deleteById(linkedList);
 			    break;
 		      case 7:
-		    	  System.out.println("Mời nhập giá trị cần tìm giá trị lớn hơn : ");
-			    	 Collections.sort(null);
-		    	
+			    operationToProduct.sort(linkedList);;
+				break;
+		      case 8:
+		    	  //convert to binary
+			    Product product2= operationToProduct.createProduct();
+			    operationToProduct.printBinary(product2);
+				break;
+		      case 9:
+		    	  System.out.println("Dữ liệu trong stack là : ");
+		    	  operationToProduct.getAllItemsFromFile("D:\\\\hoctap\\\\CyberSoft\\\\CTDL_LAB2\\\\data.txt", productStack);
+				break;
+		      case 10:
+		    	  System.out.println("Dữ liệu trong queue là : ");
+		    	  operationToProduct.getAllItemsFromFile("D:\\\\hoctap\\\\CyberSoft\\\\CTDL_LAB2\\\\data.txt", productQueue);;
 				break;
 			  case 0:
 				  System.out.println("Exit");
@@ -129,6 +108,12 @@ public class Manager1 implements Comparator<Product>{
 	 			+ "   System.out.println(\"0. Exit\");");
 	    
 	    System.out.print("Your choice: ");
+	}
+
+	@Override
+	public int compare(Product o1, Product o2) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

@@ -67,8 +67,10 @@ public class LinkedList<T> {
 		 list.insertAtTail(product);
 	 }
 	 public void Print(LinkedList<Product> linkedList) {
-		 while (!linkedList.isEmpty()) {
-			linkedList.getHead().getData().toString();
+		 Node currentNode =linkedList.getHead();
+		 while (currentNode!=null) {
+			System.out.println(currentNode.getData().toString());
+			currentNode=currentNode.getNextNode();
 		}
 	 }
 	 public void insertAtTail(Product item) {
@@ -92,7 +94,7 @@ public class LinkedList<T> {
 		}
 		head.setNextNode(null);
 	 }
-	 void deleteNodeByCode(Product key)
+	 public void deleteNodeByCode(Product key)
 	    {
 	        // Store head node
 	        Node temp = head, tail = null;
@@ -117,7 +119,37 @@ public class LinkedList<T> {
 	        // Unlink the node from linked list
 	        tail.setNextNode(temp.getNextNode());;
 	    }
-
+	 void deleteNode(int position)
+	    {
+	        // If linked list is empty
+	        if (head == null)
+	            return;
+	 
+	        // Store head node
+	        Node temp = head;
+	 
+	        // If head needs to be removed
+	        if (position == 0) {
+	            head = temp.getNextNode(); // Change head
+	            return;
+	        }
+	 
+	        // Find previous node of the node to be deleted
+	        for (int i = 0; temp != null && i < position - 1;
+	             i++)
+	            temp = temp.getNextNode();
+	 
+	        // If position is more than number of nodes
+	        if (temp == null || temp.getNextNode() == null)
+	            return;
+	 
+	        // Node temp->next is the node to be deleted
+	        // Store pointer to the next of node to be deleted
+	        Node next = temp.getNextNode().getNextNode();
+	 
+	        temp.setNextNode(next); // Unlink the deleted node from list
+	    }
+	 
 	 public <T> void deleteElement(T item) {
 		Node node=new Node();
 		if (isEmpty()) {

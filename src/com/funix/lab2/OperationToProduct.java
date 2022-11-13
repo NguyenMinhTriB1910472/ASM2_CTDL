@@ -117,16 +117,20 @@ public class OperationToProduct {
 		 do {
 			 Product product=node.getData();
 				if (product.getId().equalsIgnoreCase(idString)) {
-					System.out.println(count);
+					node.print(product);
 					finding=true;
 					return product;
 				}
 				count++;
 				node=node.getNextNode();
-		} while (finding);
+		} while (finding==false);
 		 System.out.println("Can't find your product!");
 		 return null;
 	 }
+//	 public void search(LinkedList<Product> list) {
+//		 Product product=searchByCode(list);
+//		 System.out.println();
+//	 }
 	 public void insertToTail(LinkedList<Product> list) {
 		 Product product= createProduct();
 		 list.insertAtTail(product);
@@ -138,8 +142,35 @@ public class OperationToProduct {
 //		 list.insertToHead(product);
 	 }
 	 public void deleteById(LinkedList<Product> list) {
-		 Product product = new Product();
-		 product.createProduct();
+		 Product product=searchByCode(list);
+//		 product.createProduct();
 		 list.deleteNodeByCode(product);
+		 list.Print(list);
+	 }
+	 public void sort(LinkedList<Product> list) {
+		for(Node node=list.getHead();node!=null;node=node.getNextNode()) {
+			for(Node node1=node.getNextNode();node1!=null;node1=node1.getNextNode()) {
+				if (node.getData().getId().equalsIgnoreCase(node1.getData().getId())) {
+					Product temProduct=node.getData();
+					node.setData(node1.getData());
+					if (node1!=null) {
+						node1=node1.getNextNode();
+					}
+				}
+			}
+		}
+		print(list);
+	}
+	 public int binary(int binaryNumber) {
+		 if (binaryNumber<=0) {
+			return 0;
+		}else {
+			return 10 * binary(binaryNumber/2)+(binaryNumber%2);
+		}
+	 }
+	 public void printBinary(Product product) {
+		 int quantity=product.getQuanlity();
+		 System.out.println("Biểu diễn số lượng sản phẩm sang nhị phân : ");
+		 System.out.println(binary(quantity));
 	 }
 }
